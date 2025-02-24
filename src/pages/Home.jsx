@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Search, Users, Calendar, Star, ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MentorContext } from '../componenet/MentorContext';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const {SetMentorDetails}=useContext(MentorContext)
+  const navigate=useNavigate();
 
   const testimonials = [
     {
@@ -112,6 +116,13 @@ function Home() {
     }
   ];
 
+  function handleMentor(mentordetails)
+  {
+    console.log('mentor',mentordetails)
+    SetMentorDetails(mentordetails)
+    navigate('/mentor')
+
+  }
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
@@ -293,7 +304,7 @@ function Home() {
                         </span>
                       ))}
                     </div>
-                    <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 smooth-transition">
+                    <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 smooth-transition" onClick={()=>handleMentor(mentor)}>
                       View Profile
                     </button>
                   </div>

@@ -3,15 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Home from './pages/Home';
 import MentorDetails from './pages/MentorDetails'; // Fixed typo
+import MentorProvider from "./componenet/MentorContext";
 
 function App() {
   return (
-    <Router> {/* Wrapped in BrowserRouter */}
+    <MentorProvider>
+       <Router> {/* Wrapped in BrowserRouter */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/mentor/:id" element={<MentorDetails />} />
+        <Route path="/mentor" element={<MentorDetails />} />
       </Routes>
     </Router>
+    </MentorProvider>
+   
   );
 }
 
