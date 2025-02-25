@@ -5,13 +5,13 @@ export const MentorContext = createContext();
 
 function MentorProvider({ children }) {
   // Define state or functions to share
-  const [MentorDetails, SetMentorDetails] = useState();
+  const [mentorDetails, setMentorDetails] = useState();
   useEffect(()=>{
- console.log('men',MentorDetails)
-  },[MentorDetails])
+ console.log('men',mentorDetails)
+  },[mentorDetails])
 
   return (
-    <MentorContext.Provider value={{ MentorDetails, SetMentorDetails }}>
+    <MentorContext.Provider value={{ mentorDetails, setMentorDetails }}>
       {children}
     </MentorContext.Provider>
   );

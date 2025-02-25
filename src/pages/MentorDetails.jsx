@@ -1,63 +1,64 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Star, Calendar, Clock, ArrowLeft, MessageSquare, Award, Briefcase, GraduationCap } from 'lucide-react';
+import { MentorContext } from '../components/MentorContext';
 
 function MentorDetails() {
   const { id } = useParams();
-
+  const {mentorDetails:mentor}=useContext(MentorContext)
   // Mock data for the mentor profile
-  const mentor = {
-    id: "alex-thompson",
-    name: "Alex Thompson",
-    role: "Senior Software Engineer",
-    company: "Google",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop",
-    skills: ["React", "Node.js", "TypeScript", "System Design", "Cloud Architecture", "Team Leadership"],
-    rating: 4.9,
-    sessionPrice: 75,
-    experience: "10+ years",
-    availability: "10-15 hours/week",
-    timeZone: "PST (UTC-8)",
-    languages: ["English", "Spanish"],
-    about: "I'm a Senior Software Engineer at Google with over 10 years of experience in full-stack development. I specialize in React, Node.js, and cloud architecture. I'm passionate about mentoring developers and helping them grow in their careers. My approach focuses on practical, hands-on learning combined with solid theoretical foundations.",
-    expertise: [
-      "Frontend Development (React, Vue, Angular)",
-      "Backend Development (Node.js, Python)",
-      "System Design & Architecture",
-      "Career Growth & Leadership",
-      "Technical Interview Preparation",
-      "Code Review & Best Practices"
-    ],
-    reviews: [
-      {
-        id: 1,
-        name: "David Chen",
-        role: "Software Developer",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop",
-        rating: 5,
-        date: "2 weeks ago",
-        text: "Alex is an exceptional mentor! His deep knowledge of React and system design helped me level up my skills significantly. He provided practical examples and challenged me to think differently about problem-solving."
-      },
-      {
-        id: 2,
-        name: "Sarah Miller",
-        role: "Frontend Engineer",
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&h=500&fit=crop",
-        rating: 5,
-        date: "1 month ago",
-        text: "The mentorship sessions with Alex were invaluable. He helped me prepare for technical interviews and provided great insights into working at top tech companies. His feedback on my projects was detailed and actionable."
-      },
-      {
-        id: 3,
-        name: "Michael Park",
-        role: "Full Stack Developer",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop",
-        rating: 4.8,
-        date: "2 months ago",
-        text: "Alex's mentorship was exactly what I needed to transition into a senior role. His experience in system design and architecture helped me understand complex concepts clearly. He's patient and explains things very well."
-      }
-    ]
-  };
+  // const mentor = {
+  //   id: "alex-thompson",
+  //   name: "Alex Thompson",
+  //   role: "Senior Software Engineer",
+  //   company: "Google",
+  //   image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop",
+  //   skills: ["React", "Node.js", "TypeScript", "System Design", "Cloud Architecture", "Team Leadership"],
+  //   rating: 4.9,
+  //   sessionPrice: 75,
+  //   experience: "10+ years",
+  //   availability: "10-15 hours/week",
+  //   timeZone: "PST (UTC-8)",
+  //   languages: ["English", "Spanish"],
+  //   about: "I'm a Senior Software Engineer at Google with over 10 years of experience in full-stack development. I specialize in React, Node.js, and cloud architecture. I'm passionate about mentoring developers and helping them grow in their careers. My approach focuses on practical, hands-on learning combined with solid theoretical foundations.",
+  //   expertise: [
+  //     "Frontend Development (React, Vue, Angular)",
+  //     "Backend Development (Node.js, Python)",
+  //     "System Design & Architecture",
+  //     "Career Growth & Leadership",
+  //     "Technical Interview Preparation",
+  //     "Code Review & Best Practices"
+  //   ],
+  //   reviews: [
+  //     {
+  //       id: 1,
+  //       name: "David Chen",
+  //       role: "Software Developer",
+  //       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop",
+  //       rating: 5,
+  //       date: "2 weeks ago",
+  //       text: "Alex is an exceptional mentor! His deep knowledge of React and system design helped me level up my skills significantly. He provided practical examples and challenged me to think differently about problem-solving."
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Sarah Miller",
+  //       role: "Frontend Engineer",
+  //       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&h=500&fit=crop",
+  //       rating: 5,
+  //       date: "1 month ago",
+  //       text: "The mentorship sessions with Alex were invaluable. He helped me prepare for technical interviews and provided great insights into working at top tech companies. His feedback on my projects was detailed and actionable."
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "Michael Park",
+  //       role: "Full Stack Developer",
+  //       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop",
+  //       rating: 4.8,
+  //       date: "2 months ago",
+  //       text: "Alex's mentorship was exactly what I needed to transition into a senior role. His experience in system design and architecture helped me understand complex concepts clearly. He's patient and explains things very well."
+  //     }
+  //   ]
+  // };
 
   return (
     <div className="min-h-screen bg-gray-50">

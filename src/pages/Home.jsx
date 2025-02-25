@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Search, Users, Calendar, Star, ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
-import { MentorContext } from '../componenet/MentorContext';
+import { MentorContext } from '../components/MentorContext';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-  const {SetMentorDetails}=useContext(MentorContext)
+  const {setMentorDetails}=useContext(MentorContext)
   const navigate=useNavigate();
 
   const testimonials = [
@@ -35,91 +37,237 @@ function Home() {
 
   const featuredMentors = [
     {
-      name: "Alex Thompson",
-      role: "Senior Software Engineer",
-      company: "Google",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop",
-      skills: ["React", "Node.js", "TypeScript"],
-      rating: 4.9
-    },
-    {
-      name: "Maria Garcia",
-      role: "Product Design Lead",
-      company: "Apple",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=500&fit=crop",
-      skills: ["UI/UX", "Figma", "Design Systems"],
-      rating: 4.8
-    },
-    {
-      name: "David Kim",
-      role: "Data Science Manager",
-      company: "Meta",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop",
-      skills: ["Python", "Machine Learning", "Data Analysis"],
-      rating: 4.9
-    },
-    {
-      name: "Sophia Chen",
-      role: "Cloud Architect",
-      company: "AWS",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&h=500&fit=crop",
-      skills: ["AWS", "DevOps", "Kubernetes"],
-      rating: 4.7
-    },
-    {
-      name: "James Wilson",
-      role: "Mobile Developer",
-      company: "Uber",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop",
-      skills: ["iOS", "Swift", "React Native"],
-      rating: 4.8
-    },
-    {
-      name: "Priya Patel",
-      role: "Engineering Manager",
-      company: "Microsoft",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&h=500&fit=crop",
-      skills: ["Leadership", "System Design", "Agile"],
-      rating: 4.9
-    },
-    {
-      name: "Tom Anderson",
-      role: "Security Expert",
-      company: "Cloudflare",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop",
-      skills: ["Cybersecurity", "Ethical Hacking", "Cloud Security"],
-      rating: 4.8
-    },
-    {
-      name: "Lisa Brown",
-      role: "Frontend Architect",
-      company: "Airbnb",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=500&fit=crop",
-      skills: ["Vue.js", "React", "Performance"],
-      rating: 4.7
-    },
-    {
-      name: "Ryan Zhang",
-      role: "ML Engineer",
-      company: "Tesla",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop",
-      skills: ["Deep Learning", "Computer Vision", "PyTorch"],
-      rating: 4.9
-    },
-    {
-      name: "Emma Davis",
-      role: "Backend Developer",
-      company: "Stripe",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&h=500&fit=crop",
-      skills: ["Go", "Microservices", "System Design"],
-      rating: 4.8
-    }
+      id: "alex-thompson",
+    name: "Alex Thompson",
+    role: "Senior Software Engineer",
+    company: "Google",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop",
+    skills: ["React", "Node.js", "TypeScript", "System Design", "Cloud Architecture", "Team Leadership"],
+    text: "Found my dream mentor who helped me transition into tech. Best investment in my career!",
+    rating: 4.9,
+    sessionPrice: 75,
+    experience: "10+ years",
+    availability: "10-15 hours/week",
+    timeZone: "PST (UTC-8)",
+    languages: ["English", "Spanish"],
+    about: "I'm a Senior Software Engineer at Google with over 10 years of experience in full-stack development. I specialize in React, Node.js, and cloud architecture. I'm passionate about mentoring developers and helping them grow in their careers. My approach focuses on practical, hands-on learning combined with solid theoretical foundations.",
+    expertise: [
+      "Frontend Development (React, Vue, Angular)",
+      "Backend Development (Node.js, Python)",
+      "System Design & Architecture",
+      "Career Growth & Leadership",
+      "Technical Interview Preparation",
+      "Code Review & Best Practices"
+    ],
+    reviews: [
+      {
+        id: 1,
+        name: "David Chen",
+        role: "Software Developer",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop",
+        rating: 5,
+        date: "2 weeks ago",
+        text: "Alex is an exceptional mentor! His deep knowledge of React and system design helped me level up my skills significantly. He provided practical examples and challenged me to think differently about problem-solving."
+      },
+      {
+        id: 2,
+        name: "Sarah Miller",
+        role: "Frontend Engineer",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&h=500&fit=crop",
+        rating: 5,
+        date: "1 month ago",
+        text: "The mentorship sessions with Alex were invaluable. He helped me prepare for technical interviews and provided great insights into working at top tech companies. His feedback on my projects was detailed and actionable."
+      },
+      {
+        id: 3,
+        name: "Michael Park",
+        role: "Full Stack Developer",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop",
+        rating: 4.8,
+        date: "2 months ago",
+        text: "Alex's mentorship was exactly what I needed to transition into a senior role. His experience in system design and architecture helped me understand complex concepts clearly. He's patient and explains things very well."
+      }
+    ]
+   },
+   {
+    id: "emily-carter",
+    name: "Emily Carter",
+    role: "Data Scientist",
+    company: "Amazon",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=500&fit=crop",
+    skills: ["Python", "Machine Learning", "Data Analysis", "SQL", "Deep Learning", "Data Visualization"],
+    text: "Emily's expertise in machine learning is unmatched. She guided me through complex projects and helped me land my dream job.",
+    rating: 4.9,
+    sessionPrice: 80,
+    experience: "8+ years",
+    availability: "8-12 hours/week",
+    timeZone: "EST (UTC-5)",
+    languages: ["English"],
+    about: "I'm a Data Scientist at Amazon with a strong background in machine learning and data analysis. I love helping aspiring data scientists navigate the field and build impactful projects.",
+    expertise: [
+        "Machine Learning Algorithms",
+        "Data Analysis & Interpretation",
+        "Deep Learning & Neural Networks",
+        "Big Data Technologies",
+        "Statistical Modeling",
+        "Data Visualization (Tableau, Power BI)"
+    ],
+    reviews: [
+        {
+            id: 4,
+            name: "Laura Kim",
+            role: "Junior Data Scientist",
+            image: "https://images.unsplash.com/photo-1599566150163-291cd6292394?w=500&h=500&fit=crop",
+            rating: 5,
+            date: "3 weeks ago",
+            text: "Emily is an amazing mentor! She simplified complex machine learning concepts and provided practical guidance for my projects."
+        },
+        {
+            id: 5,
+            name: "Ryan Patel",
+            role: "Data Analyst",
+            image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&h=500&fit=crop",
+            rating: 4.8,
+            date: "1 month ago",
+            text: "Her sessions were incredibly helpful. Emily's expertise in data visualization helped me present my findings more effectively."
+        }
+    ]
+},{
+  id: "jordan-lee",
+  name: "Jordan Lee",
+  role: "Product Manager",
+  company: "Microsoft",
+  image: "https://images.unsplash.com/photo-1539571696357-5a69c17a6796?w=500&h=500&fit=crop",
+  skills: ["Product Strategy", "Agile", "User Research", "Roadmap Planning", "Data-Driven Decision Making", "Stakeholder Management"],
+  text: "Jordan's insights into product management are invaluable. He helped me understand the intricacies of building successful products.",
+  rating: 4.8,
+  sessionPrice: 70,
+  experience: "9+ years",
+  availability: "9-14 hours/week",
+  timeZone: "PST (UTC-8)",
+  languages: ["English", "Korean"],
+  about: "I'm a Product Manager at Microsoft with a passion for building user-centric products. I enjoy mentoring aspiring product managers and helping them navigate the product lifecycle.",
+  expertise: [
+      "Product Vision & Strategy",
+      "Agile & Scrum Methodologies",
+      "User Experience (UX) Design",
+      "Market Research & Analysis",
+      "Product Launch & Go-to-Market",
+      "Product Analytics & Metrics"
+  ],
+  reviews: [
+      {
+          id: 6,
+          name: "Grace Nguyen",
+          role: "Associate Product Manager",
+          image: "https://images.unsplash.com/photo-1589571894960-20c641995bb8?w=500&h=500&fit=crop",
+          rating: 5,
+          date: "2 weeks ago",
+          text: "Jordan's mentorship was crucial for my career growth. He provided practical advice on product strategy and roadmap planning."
+      },
+      {
+          id: 7,
+          name: "Kevin Ramirez",
+          role: "Product Analyst",
+          image: "https://images.unsplash.com/photo-1521119989659-a83752784285?w=500&h=500&fit=crop",
+          rating: 4.7,
+          date: "1 month ago",
+          text: "His insights into data-driven decision making helped me improve my analytical skills and make better product recommendations."
+      }
+  ]
+},{
+  id: "olivia-white",
+ name: "Olivia White",
+ role: "UX Designer",
+ company: "Adobe",
+ image: "https://images.unsplash.com/photo-1595152772839-290e99b58129?w=500&h=500&fit=crop",
+ skills: ["User Research", "Wireframing", "Prototyping", "UI Design", "Interaction Design", "Usability Testing"],
+ text: "Olivia's passion for user experience is contagious. She helped me build a strong portfolio and understand the nuances of UX design.",
+ rating: 4.8,
+ sessionPrice: 65,
+ experience: "7+ years",
+ availability: "7-10 hours/week",
+ timeZone: "PST (UTC-8)",
+ languages: ["English", "French"],
+ about: "I'm a UX Designer at Adobe with a focus on creating intuitive and user-friendly interfaces. I enjoy mentoring aspiring designers and helping them develop their skills in user research and design.",
+ expertise: [
+     "User-Centered Design",
+     "Interaction Design (IxD)",
+     "User Interface (UI) Design",
+     "Design Thinking & Strategy",
+     "Usability Testing & Analysis",
+     "Design Tools (Figma, Sketch, Adobe XD)"
+ ],
+ reviews: [
+     {
+         id: 8,
+         name: "Isabella Rodriguez",
+         role: "Junior UX Designer",
+         image: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=500&h=500&fit=crop",
+         rating: 5,
+         date: "1 month ago",
+         text: "Olivia is an excellent mentor! She provided valuable feedback on my portfolio and helped me understand the importance of user research."
+     },
+     {
+         id: 9,
+         name: "Noah Wilson",
+         role: "UI Designer",
+         image: "https://images.unsplash.com/photo-1568602471122-78329ba345c2?w=500&h=500&fit=crop",
+         rating: 4.7,
+         date: "2 months ago",
+         text: "Her sessions were very insightful. Olivia's expertise in interaction design helped me improve my prototyping skills."
+     }
+ ]
+},{
+  id: "sophia-garcia",
+  name: "Sophia Garcia",
+  role: "Cybersecurity Engineer",
+  company: "IBM",
+  image: "https://images.unsplash.com/photo-1559526324-59353ba60361?w=500&h=500&fit=crop",
+  skills: ["Network Security", "Penetration Testing", "Incident Response", "Cryptography", "Security Audits", "Cloud Security"],
+  text: "Sophia's expertise in cybersecurity is phenomenal. She demystified complex security concepts and helped me build a strong foundation.",
+  rating: 4.9,
+  sessionPrice: 90,
+  experience: "10+ years",
+  availability: "6-10 hours/week",
+  timeZone: "EST (UTC-5)",
+  languages: ["English", "Spanish"],
+  about: "I'm a Cybersecurity Engineer at IBM, specializing in network security and incident response. I'm passionate about sharing my knowledge and helping aspiring security professionals navigate the cybersecurity landscape.",
+  expertise: [
+      "Security Information and Event Management (SIEM)",
+      "Vulnerability Management",
+      "Ethical Hacking & Penetration Testing",
+      "Security Compliance (e.g., GDPR, HIPAA)",
+      "Cloud Security (AWS, Azure, GCP)",
+      "Security Automation & Scripting"
+  ],
+  reviews: [
+      {
+          id: 10,
+          name: "Carlos Martinez",
+          role: "Security Analyst",
+          image: "https://img.freepik.com/free-photo/headshot-attractive-curly-youngster-looks-seriously-camera_176532-8126.jpg?t=st=1740456452~exp=1740460052~hmac=21fa8fd1227196a52bda4225f08ffebe16632b07fabb6bf311bdf35435285ce3&w=1380",
+          rating: 5,
+          date: "1 month ago",
+          text: "Sophia is an exceptional mentor! Her deep understanding of network security and penetration testing helped me excel in my role."
+      },
+      {
+          id: 11,
+          name: "Aisha Khan",
+          role: "Cybersecurity Intern",
+          image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          rating: 4.8,
+          date: "2 weeks ago",
+          text: "Her sessions were incredibly informative. Sophia's expertise in incident response and security audits helped me understand the practical aspects of cybersecurity."
+      }
+  ]
+}
   ];
 
   function handleMentor(mentordetails)
   {
     console.log('mentor',mentordetails)
-    SetMentorDetails(mentordetails)
+    setMentorDetails(mentordetails)
     navigate('/mentor')
 
   }
@@ -133,23 +281,7 @@ function Home() {
   return (
     <div className="min-h-screen bg-white scroll-smooth">
       {/* Navigation */}
-      <nav className="fixed w-full glass-effect shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center">
-              <span className="text-2xl font-bold gradient-text">MentorMatch</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-600 hover:text-blue-600 smooth-transition">Browse Mentors</a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 smooth-transition">How it Works</a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 smooth-transition">Pricing</a>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 smooth-transition">
-                Get Started
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <NavBar></NavBar>
 
       {/* Hero Section with Search */}
       <div className="relative pt-24 pb-16 sm:pt-32 sm:pb-24 overflow-hidden"
@@ -329,43 +461,7 @@ function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4 gradient-text">MentorMatch</h3>
-              <p className="text-gray-400">Connecting ambitious learners with expert mentors.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">For Mentees</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">Browse Mentors</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">How it Works</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">Pricing</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">For Mentors</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">Apply as Mentor</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">Success Stories</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">FAQ</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">Support</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">Terms of Service</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white smooth-transition">Privacy Policy</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>&copy; 2024 MentorMatch. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer></Footer>
     </div>
   );
 }

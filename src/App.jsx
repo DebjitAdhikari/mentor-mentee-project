@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Home from './pages/Home';
 import MentorDetails from './pages/MentorDetails'; // Fixed typo
-import MentorProvider from "./componenet/MentorContext";
+import MentorProvider from "./components/MentorContext";
 
 function App() {
   return (
